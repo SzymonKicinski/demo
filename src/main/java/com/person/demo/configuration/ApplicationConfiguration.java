@@ -1,6 +1,6 @@
 package com.person.demo.configuration;
 
-import com.jpworks.datajdbc.service.EmployeeEndpoint;
+import com.person.demo.service.PersonEndpoint;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ public class ApplicationConfiguration {
     private Bus bus;
 
     @Bean
-    public Endpoint endpoint(EmployeeEndpoint employeeEndpoint) {
-        EndpointImpl endpoint = new EndpointImpl(bus, employeeEndpoint);
-        endpoint.publish("/service/employee");
+    public Endpoint endpoint(PersonEndpoint personEndpoint) {
+        EndpointImpl endpoint = new EndpointImpl(bus, personEndpoint);
+        endpoint.publish("/service/person");
         return endpoint;
     }
 }

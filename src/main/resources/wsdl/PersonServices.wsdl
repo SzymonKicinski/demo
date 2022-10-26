@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+				  xmlns:tns="http://www.jpworks.com/person"
+				  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+				  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+				  name="PersonService" targetNamespace="http://www.jpworks.com/person">
+	<wsdl:documentation>SOAP Definition for ws-person</wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://www.jpworks.com/person" schemaLocation="person.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="PersonByIdRequest">
+		<wsdl:part name="parameters" element="tns:PersonByIdRequest"/>
+	</wsdl:message>
+	<wsdl:message name="PersonByNameRequest">
+		<wsdl:part name="parameters" element="tns:PersonByNameRequest"/>
+	</wsdl:message>
+	<wsdl:message name="PersonResponse">
+		<wsdl:part name="parameters" element="tns:PersonResponse"/>
+	</wsdl:message>
+	<wsdl:message name="PersonsResponse">
+		<wsdl:part name="parameters" element="tns:PersonsResponse"/>
+	</wsdl:message>
+
+	<!--This element defines the service operations and the combination of input and output elements to clients-->
+	<wsdl:portType name="PersonServicePortType">
+		<wsdl:operation name="GetPersonById">
+			<wsdl:input message="tns:PersonByIdRequest"/>
+			<wsdl:output message="tns:PersonResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetPersonsByName">
+			<wsdl:input message="tns:PersonByNameRequest"/>
+			<wsdl:output message="tns:PersonsResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- This element provides specific details on how an operation will actually be transmitted over the network-->
+	<wsdl:binding name="PersonServiceSOAP" type="tns:PersonServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="GetPersonById">
+			<soap:operation soapAction="http://www.jpworks.com/person/GetPersonById"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetPersonsByName">
+			<soap:operation soapAction="http://www.jpworks.com/person/GetPersonsByName"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- Definition of the service and the endpoint. -->
+	<wsdl:service name="PersonService">
+		<wsdl:port name="PersonServiceSOAP" binding="tns:PersonServiceSOAP">
+			<soap:address location="the-url-service-goes-here"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

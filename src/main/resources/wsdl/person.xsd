@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+		   xmlns:n1="http://www.jpworks.com/person"
+		   targetNamespace="http://www.jpworks.com/person"
+		   elementFormDefault="qualified"
+		   attributeFormDefault="unqualified"
+		   vc:minVersion="1.1">
+	<xs:element name="person">
+		<xs:annotation>
+			<xs:documentation>Person personal information</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:long" use="required"/>
+			<xs:attribute name="firstname" type="xs:string" use="required"/>
+			<xs:attribute name="lastname" type="xs:string" use="required"/>
+			<xs:attribute name="pesel" type="xs:string" use="required"/>
+			<xs:attribute name="birthdate" type="xs:date" use="required"/>
+			<xs:attribute name="gender" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PersonResponse">
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:element ref="n1:person"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PersonsResponse">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="n1:person"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PersonByIdRequest">
+		<xs:annotation>
+			<xs:documentation>Query person by Id</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:long" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PersonByNameRequest">
+		<xs:annotation>
+			<xs:documentation>Query an person by name</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="firstname" type="xs:string" use="optional"/>
+			<xs:attribute name="lastname" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PersonByPeselRequest">
+		<xs:annotation>
+			<xs:documentation>Query person by Pesel</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="pesel" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
