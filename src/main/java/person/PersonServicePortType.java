@@ -38,7 +38,7 @@ public interface PersonServicePortType {
     @WebResult(name = "PersonResponse", targetNamespace = "http://www.jpworks.com/person", partName = "parameters")
     public PersonResponse getPersonByPesel(
 
-            @WebParam(partName = "parameters", name = "GetPersonByPeselRequest", targetNamespace = "http://www.jpworks.com/person")
+            @WebParam(partName = "parameters", name = "PersonByPeselRequest", targetNamespace = "http://www.jpworks.com/person")
             PersonByPeselRequest parameters
     );
 }
