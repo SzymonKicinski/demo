@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.jpworks.com/person">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <emp:PersonByPeselRequest pesel="1234"/>
+    </soapenv:Body>
+</soapenv:Envelope>

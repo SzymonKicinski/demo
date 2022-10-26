@@ -13,6 +13,9 @@
 	<wsdl:message name="PersonByIdRequest">
 		<wsdl:part name="parameters" element="tns:PersonByIdRequest"/>
 	</wsdl:message>
+	<wsdl:message name="PersonByPeselRequest">
+		<wsdl:part name="parameters" element="tns:PersonByPeselRequest"/>
+	</wsdl:message>
 	<wsdl:message name="PersonByNameRequest">
 		<wsdl:part name="parameters" element="tns:PersonByNameRequest"/>
 	</wsdl:message>
@@ -29,6 +32,10 @@
 			<wsdl:input message="tns:PersonByIdRequest"/>
 			<wsdl:output message="tns:PersonResponse"/>
 		</wsdl:operation>
+		<wsdl:operation name="GetPersonByPesel">
+			<wsdl:input message="tns:PersonByPeselRequest"/>
+			<wsdl:output message="tns:PersonResponse"/>
+		</wsdl:operation>
 		<wsdl:operation name="GetPersonsByName">
 			<wsdl:input message="tns:PersonByNameRequest"/>
 			<wsdl:output message="tns:PersonsResponse"/>
@@ -40,6 +47,15 @@
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsdl:operation name="GetPersonById">
 			<soap:operation soapAction="http://www.jpworks.com/person/GetPersonById"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetPersonByPesel">
+			<soap:operation soapAction="http://www.jpworks.com/person/GetPersonByPesel"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>

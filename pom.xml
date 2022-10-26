@@ -15,9 +15,6 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-<!--		<rest-assured.version>4.3.1</rest-assured.version>-->
-		<groovy.version>3.0.2</groovy.version>
-
 		<!-- Other properties-->
 		<java.version>15</java.version>
 		<cxf.version>3.4.0</cxf.version>
@@ -49,6 +46,32 @@
 			<artifactId>jaxws-api</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.3</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>2.3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.7</version>
+		</dependency>
 
 		<!-- CXF Framework -->
 		<dependency>
@@ -76,12 +99,17 @@
 
 
 		<!-- Testing -->
-<!--		<dependency>-->
-<!--			<groupId>io.rest-assured</groupId>-->
-<!--			<artifactId>rest-assured</artifactId>-->
-<!--			<version>5.2.0</version>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.epages</groupId>
+			<artifactId>restdocs-api-spec-restassured</artifactId>
+			<version>0.16.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -111,7 +139,7 @@
 							<sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${basedir}/src/main/resources/wsdl/Person.wsdl</wsdl>
+									<wsdl>${basedir}/src/main/resources/wsdl/PersonServices.wsdl</wsdl>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
